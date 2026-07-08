@@ -20,6 +20,15 @@ gameData.forEach(game => {
     console.log (game);
     gameCard.innerHTML = `
     <img src="${game.image}">
+    <div class="game-card-info">
+                <h4 id="game1-name">Game Name</h4>
+                <h6>${game.questionCount} questions</h6>
+                <h6>${game.difficulty}</h6>
+            </div>
+            <div>
+                <button id="play-button-game-1">PLAY</button>
+                <button id="edit-button-game-1">✎</button>
+            </div>
     `
 
     gamesDisplayBar.appendChild(gameCard);
