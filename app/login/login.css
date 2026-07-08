@@ -1,0 +1,9 @@
+#login-card{
+    flex-direction: column;
+    margin: 30%;
+
+}
+
+#login-card *{
+    margin: 0.5rem;
+}
