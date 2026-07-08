@@ -1,0 +1,21 @@
+/* main */
+
+.settings{
+    padding: 14%;
+    
+}
+
+/* changesettings */
+
+.changesettings {
+    box-shadow: 0px 1px 10px #12111172;
+    margin-top: -14%;
+    border-radius: 5px;
+}
+
+.titlesettings h2 {
+    color: #2B8000;
+}
+
+
+/* buttons to save changes */
