@@ -1,4 +1,4 @@
-# JS Final Project — Quiz App · Team [X]
+# JS Final Project — Quiz App · Team [2]
 
 JavaScript Bootcamp 2026 · GM2 Dev
 
@@ -6,8 +6,8 @@ JavaScript Bootcamp 2026 · GM2 Dev
 
 | Name | GitHub |
 |------|--------|
-| [Name 1] | [@username1](https://github.com/username1) |
-| [Name 2] | [@username2](https://github.com/username2) |
+| Mayra Cueto| [@mayragm2](https://github.com/mayragm2) |
+| Tobias Manquez | [@tobiasmanquez](https://github.com/tobiasmanquez) |
 
 ## All Teams
 
