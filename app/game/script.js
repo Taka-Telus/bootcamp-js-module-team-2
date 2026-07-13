@@ -32,6 +32,16 @@ async function respuestaUsuario() {
     for(let i = 0; i<gameData.questions.length; i++){
             gameInterface.innerHTML = `
             <h3>${gameData.questions[i].text}</h3>
+            <div class = "card"> 
+            <h4>${gameData.questions[i].options[0]}</h4>
+            </div>
+            <div class = "card"> 
+            <h4>${gameData.questions[i].options[1]}</h4>
+            </div>
+            <div class = "card"> 
+            <h4>${gameData.questions[i].options[2]}</h4>
+            </div>
+
             `;
             //await respuestaUsuario();
     }
