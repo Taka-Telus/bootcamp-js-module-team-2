@@ -3,6 +3,10 @@ const apiURL = `https://quiz-api.cesar-kastli.workers.dev/games/${gameID}`
 
 console.log (apiURL);
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
 async function traerJuego(apiURL) {
     try {
         const respuesta = await fetch(apiURL);
@@ -25,16 +29,18 @@ async function traerJuego(apiURL) {
     const gameQuestionTitle = document.createElement ("div");
     
     function displayQuestions (i){
-    
+            
             gameQuestionTitle.innerHTML = `
             <h3>${gameData.questions[i].text}</h3> `
             
             titleDisplay.appendChild(gameQuestionTitle);
             questionDisplay.innerHTML = ("");
+            const shuffledQuestions = [... gameData.questions[i].options];
+            shuffledQuestions.sort((a, b) => a.localeCompare(b));
             for (let q = 0; q < gameData.questions[i].options.length; q++){
                     const gameQuestions = `
                     <div class = "card"> 
-                    <h4>${gameData.questions[i].options[q]}</h4>
+                    <h4>${shuffledQuestions[q]}</h4>
                     </div>
                     `
                     questionDisplay.insertAdjacentHTML("beforeend", gameQuestions);
@@ -48,8 +54,16 @@ async function traerJuego(apiURL) {
 
 
     questionDisplay.addEventListener ("click", () => {
+            const userAnswer = event.target.closest (".card");
+            userAnswer.innerHTML = `apretaste`
+            const nextQuestionButton = document.createElement("button");
+            nextQuestionButton.innerHTML = `Siguiente Pregunta`
+            questionDisplay.appendChild (nextQuestionButton);
+            nextQuestionButton.addEventListener ("click", () => {
             i ++;   
             displayQuestions(i);
+
+            })
 
     }
 )
