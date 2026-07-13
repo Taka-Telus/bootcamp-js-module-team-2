@@ -26,25 +26,26 @@ async function respuestaUsuario() {
     const gameData = JSON.parse(data);
     console.log (gameData);
 
-    const main = document.getElementById("game-display");
-    const gameInterface = document.createElement ("div");
+    const titleDisplay = document.getElementById("title-display");
+    const questionDisplay = document.getElementById("question-display");
+    const gameQuestionTitle = document.createElement ("div");
 
     for(let i = 0; i<gameData.questions.length; i++){
-            gameInterface.innerHTML = `
-            <h3>${gameData.questions[i].text}</h3>
+        gameQuestionTitle.innerHTML = `
+        <h3>${gameData.questions[i].text}</h3> `
+        
+        titleDisplay.appendChild(gameQuestionTitle);
+        questionDisplay.innerHTML = ("");
+        for (let b = 0; b<gameData.questions[i].options.length; b++){
+            const gameQuestions = `
             <div class = "card"> 
-            <h4>${gameData.questions[i].options[0]}</h4>
+            <h4>${gameData.questions[i].options[b]}</h4>
             </div>
-            <div class = "card"> 
-            <h4>${gameData.questions[i].options[1]}</h4>
-            </div>
-            <div class = "card"> 
-            <h4>${gameData.questions[i].options[2]}</h4>
-            </div>
-
-            `;
+            `
+            questionDisplay.insertAdjacentHTML("beforeend", gameQuestions);
+        }
+            
             //await respuestaUsuario();
     }
 
-    main.appendChild(gameInterface);
 })();
