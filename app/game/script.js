@@ -15,10 +15,16 @@ async function traerUsuario(apiURL) {
 }
 
 ;(async () => {
-    await traerUsuario();
+    await traerUsuario(apiURL);
     const data = localStorage.getItem("gameData");
     const gameData = JSON.parse(data);
     console.log (data);
 
-
+    const main = document.getElementById("game-display");
+    const gameInterface = document.createElement ("div");   
+    gameInterface.innerHTML = `
+            <h5 class="score">Puntaje</h5>
+            <h5 id="xp-nav">0 XP</h5>
+    `;
+    main.appendChild(gameInterface);
 })();
