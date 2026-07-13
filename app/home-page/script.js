@@ -13,7 +13,7 @@ async function traerUsuario(apiURL) {
 
     const gamesDisplayBar = document.getElementById("games-menu-home");
     const apiURL = "https://quiz-api.cesar-kastli.workers.dev/games"
-    await traerUsuario();
+    await traerUsuario(apiURL);
     const data = localStorage.getItem("gamesData");
     const gamesData = JSON.parse(data);
     console.log (data);
