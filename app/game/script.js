@@ -39,8 +39,8 @@ async function traerJuego(apiURL) {
             shuffledQuestions.sort((a, b) => a.localeCompare(b));
             for (let q = 0; q < gameData.questions[i].options.length; q++){
                     const gameQuestions = `
-                    <div class = "card"> 
-                    <h4>${shuffledQuestions[q]}</h4>
+                    <div id = "${shuffledQuestions[q]}"class = "card"> 
+                    <h4 >${shuffledQuestions[q]}</h4>
                     </div>
                     `
                     questionDisplay.insertAdjacentHTML("beforeend", gameQuestions);
@@ -54,18 +54,24 @@ async function traerJuego(apiURL) {
 
 
     questionDisplay.addEventListener ("click", () => {
-            const userAnswer = event.target.closest (".card");
-            userAnswer.innerHTML = `apretaste`
+
+        const userAnswer = event.target.closest (".card");
             const nextQuestionButton = document.createElement("button");
+            console.log (userAnswer.id);
+            if (userAnswer.id === gameData.questions[i].options[0]){
+                userAnswer.innerHTML = `Correcta`
+            } else {
+                userAnswer.innerHTML = `Incorrecta`
+            }
             nextQuestionButton.innerHTML = `Siguiente Pregunta`
             questionDisplay.appendChild (nextQuestionButton);
             nextQuestionButton.addEventListener ("click", () => {
             i ++;   
             displayQuestions(i);
-
             })
 
     }
+
 )
 
 })();
