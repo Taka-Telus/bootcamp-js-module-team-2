@@ -3,7 +3,7 @@ const apiURL = `https://quiz-api.cesar-kastli.workers.dev/games/${gameID}`
 
 console.log (apiURL);
 
-async function traerUsuario(apiURL) {
+async function traerJuego(apiURL) {
     try {
         const respuesta = await fetch(apiURL);
         const datos = await respuesta.json();
@@ -14,17 +14,27 @@ async function traerUsuario(apiURL) {
     }
 }
 
+async function respuestaUsuario() {
+
+    addEventListener
+    
+}
+
 ;(async () => {
-    await traerUsuario(apiURL);
+    await traerJuego(apiURL);
     const data = localStorage.getItem("gameData");
     const gameData = JSON.parse(data);
-    console.log (data);
+    console.log (gameData);
 
     const main = document.getElementById("game-display");
-    const gameInterface = document.createElement ("div");   
-    gameInterface.innerHTML = `
-            <h5 class="score">Puntaje</h5>
-            <h5 id="xp-nav">0 XP</h5>
-    `;
+    const gameInterface = document.createElement ("div");
+
+    for(let i = 0; i<gameData.questions.length; i++){
+            gameInterface.innerHTML = `
+            <h3>${gameData.questions[i].text}</h3>
+            `;
+            //await respuestaUsuario();
+    }
+
     main.appendChild(gameInterface);
 })();
