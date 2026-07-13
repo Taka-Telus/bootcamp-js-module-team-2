@@ -3,7 +3,7 @@ async function traerUsuario(apiURL) {
         const respuesta = await fetch(apiURL);
         const datos = await respuesta.json();
         //console.log(JSON.stringify(datos));
-        localStorage.setItem("gameData", JSON.stringify(datos));
+        localStorage.setItem("gamesData", JSON.stringify(datos));
     } catch (error) {
         console.log("Falló:", error);
     }
@@ -14,10 +14,10 @@ async function traerUsuario(apiURL) {
     const gamesDisplayBar = document.getElementById("games-menu-home");
     const apiURL = "https://quiz-api.cesar-kastli.workers.dev/games"
     await traerUsuario();
-    const data = localStorage.getItem("gameData");
-    const gameData = JSON.parse(data);
+    const data = localStorage.getItem("gamesData");
+    const gamesData = JSON.parse(data);
     console.log (data);
-    gameData.forEach(game => {
+    gamesData.forEach(game => {
         const gameCard = document.createElement("div");
         gameCard.classList.add("card");
         console.log (game);
