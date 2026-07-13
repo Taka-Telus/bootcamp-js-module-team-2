@@ -1,4 +1,4 @@
-async function traerUsuario() {
+async function traerUsuario(apiURL) {
     try {
         const respuesta = await fetch(apiURL);
         const datos = await respuesta.json();
@@ -23,26 +23,39 @@ async function traerUsuario() {
         console.log (game);
         gameCard.innerHTML = `
         <img src="${game.image}">
-        <div class="game-card-info">
-                    <h4 id="game1-name">Game Name</h4>
+        <div class="game-card-info" >
+                    <h4 id = "${game.id}">${game.title}</h4>
                     <h6>${game.questionCount} questions</h6>
                     <h6>${game.difficulty}</h6>
                 </div>
                 <div>
-                    <button id="play-${game.id}">PLAY</button>
-                    <button id="edit-${game.id}">✎</button>
+                    <button class="play-btn" id = "${game.id}">PLAY</button>
+                    <button class="edit-btn" id = "${game.id}">✎</button>
                 </div>
         `
         gamesDisplayBar.appendChild(gameCard);
     });
 
-    const buttons = document.getElementsByTagName("button");
-    Array.from(buttons).forEach(button => { 
-    button.addEventListener ("click", () => {
-    
+        gamesDisplayBar.addEventListener("click", (event) => {
+            const playBtn = event.target.closest (".play-btn");
+            const editBtn = event.target.closest (".edit-btn");
+            console.log ("click");
 
-    });
-    })
+            if (playBtn) {
+            const gameId = playBtn.id;
+            localStorage.setItem ("game-id", gameId);
+            window.location.href = "http://127.0.0.1:5500/app/game/game.html"
+        }
+
+        if (editBtn) {
+            const gameId = editBtn.id;
+            console.log("Edit game", gameId);
+            localStorage.setItem ("edit-id", gameId);
+            window.location.href = "http://127.0.0.1:5500/app/new-game/edit.html"
+
+        }
+
+        })
     
 })();
 
