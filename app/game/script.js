@@ -14,38 +14,44 @@ async function traerJuego(apiURL) {
     }
 }
 
-async function respuestaUsuario() {
-
-    addEventListener
-    
-}
 
 ;(async () => {
     await traerJuego(apiURL);
     const data = localStorage.getItem("gameData");
     const gameData = JSON.parse(data);
     console.log (gameData);
-
     const titleDisplay = document.getElementById("title-display");
     const questionDisplay = document.getElementById("question-display");
     const gameQuestionTitle = document.createElement ("div");
-
-    for(let i = 0; i<gameData.questions.length; i++){
-        gameQuestionTitle.innerHTML = `
-        <h3>${gameData.questions[i].text}</h3> `
-        
-        titleDisplay.appendChild(gameQuestionTitle);
-        questionDisplay.innerHTML = ("");
-        for (let b = 0; b<gameData.questions[i].options.length; b++){
-            const gameQuestions = `
-            <div class = "card"> 
-            <h4>${gameData.questions[i].options[b]}</h4>
-            </div>
-            `
-            questionDisplay.insertAdjacentHTML("beforeend", gameQuestions);
-        }
+    
+    function displayQuestions (i){
+    
+            gameQuestionTitle.innerHTML = `
+            <h3>${gameData.questions[i].text}</h3> `
             
-            //await respuestaUsuario();
+            titleDisplay.appendChild(gameQuestionTitle);
+            questionDisplay.innerHTML = ("");
+            for (let q = 0; q < gameData.questions[i].options.length; q++){
+                    const gameQuestions = `
+                    <div class = "card"> 
+                    <h4>${gameData.questions[i].options[q]}</h4>
+                    </div>
+                    `
+                    questionDisplay.insertAdjacentHTML("beforeend", gameQuestions);
+            }
+            
     }
+
+    let i = 0;
+
+    displayQuestions(i);
+
+
+    questionDisplay.addEventListener ("click", () => {
+            i ++;   
+            displayQuestions(i);
+
+    }
+)
 
 })();
