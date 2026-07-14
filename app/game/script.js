@@ -46,8 +46,11 @@ async function traerJuego(apiURL) {
                     </div>
                     `
                     questionDisplay.insertAdjacentHTML("beforeend", gameQuestions);
+
                 }
                 questionDisplay.addEventListener ("click", createClickHandler(shuffle));   
+
+            
     }
     function createClickHandler (shuffle) {
         return function clickHandler(event) {
@@ -82,6 +85,12 @@ async function traerJuego(apiURL) {
             nextQuestionButton.addEventListener ("click", () => {
                 i ++;   
                 displayQuestions(i);
+                console.log(i);
+                console.log (gameData.questions.length);
+
+                if ((i+1)===gameData.questions.length){
+                        window.location.href = "http://127.0.0.1:5500/app/ranking/ranking.html";
+                }
 
             })
         }    
