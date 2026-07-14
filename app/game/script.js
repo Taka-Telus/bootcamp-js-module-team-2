@@ -30,7 +30,10 @@ async function traerJuego(apiURL) {
     let i = 0;
 
     displayQuestions(i);
-    
+
+    function func(a, b) {  
+        return 0.5 - Math.random();
+    }  
     function displayQuestions (i){
             
             gameQuestionTitle.innerHTML = `
@@ -38,12 +41,14 @@ async function traerJuego(apiURL) {
             
             titleDisplay.appendChild(gameQuestionTitle);
             questionDisplay.innerHTML = ("");
-            const shuffledQuestions = [... gameData.questions[i].options];
-            shuffledQuestions.sort((a, b) => a.localeCompare(b));
-            for (let q = 0; q < gameData.questions[i].options.length; q++){
+            const order = [0, 1, 2, 3];
+            const shuffle = order.sort(func);
+            const Questions = [...gameData.questions[i].options];
+            for (let q = 0; q < Questions.length; q++){
+                    console.log(`${shuffle[q]} ${Questions[shuffle[q]]}`);
                     const gameQuestions = `
-                    <div id = "${shuffledQuestions[q]}"class ="card"> 
-                    <h4 >${shuffledQuestions[q]}</h4>
+                    <div id = "${shuffle[q]}"class ="card"> 
+                    <h4 >${Questions[shuffle[q]]}</h4>
                     </div>
                     `
                     questionDisplay.insertAdjacentHTML("beforeend", gameQuestions);
@@ -57,14 +62,19 @@ async function traerJuego(apiURL) {
 function clickHandler () {
             const userAnswer = event.target.closest (".card");
             const nextQuestionButton = document.createElement("button");
+            const rightAnswer = document.getElementById("0");
+
             
-            if (userAnswer.id === gameData.questions[i].options[0]){
+            if (userAnswer.id === 0){
                 userAnswer.classList.remove("card");
                 userAnswer.classList.add("correcta");
             } else {
                 userAnswer.classList.remove("card");
                 userAnswer.classList.add("incorrecta");
+                rightAnswer.classList.remove("card");
+                rightAnswer.classList.add("correcta");
             }
+
 
             nextQuestionButton.innerHTML = `Siguiente Pregunta`;
 
@@ -73,6 +83,7 @@ function clickHandler () {
             nextQuestionButton.addEventListener ("click", () => {
                 i ++;   
                 displayQuestions(i);
+
             })
 
     }
