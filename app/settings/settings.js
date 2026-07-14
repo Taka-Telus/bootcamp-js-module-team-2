@@ -6,24 +6,36 @@ const btnsave = document.querySelector("#btn-save");
 const btnreturnmenú = document.querySelector("#btn-return");
 const btnlogout = document.querySelector("#btn-logout");
 
+btnsave.addEventListener("click", () => {
+    localStorage.setItem("save", save.value);
+});
 
+btnsave.addEventListener("click", () => {
 
-document.getElementById('btnsave').addEventListener('click', function() {
-    
-    alert('Cambios guardados con éxito.');
+    const save = localStorage.getItem("save");
+    if (save) {
+         }
+
 });
 
 
-document.getElementById('btnreturnmenú').addEventListener('click', function() {
-    // Cambia 'menu.html' por la ruta real de tu página de menú
-    window.location.href = 'home-page.html'; 
+btnreturnmenú.addEventListener("click", () => {
+    localStorage.setItem("returnmenú", returnmenú.value);
+    
 });
 
-// 3. Cerrar sesión
-document.getElementById('btnlogout').addEventListener('click', function() {
-    // eliminas el token de autenticación (ej. localStorage o cookies)
-    localStorage.removeItem('usuarioToken'); 
-    
-    
-    window.location.href = 'login.html'; 
+
+btnreturnmenú.addEventListener("click", () => {
+    const returnmenú = localStorage.getItem("returnmenú");
+    if (returnmenú) {
+        returnmenú.value = returnmenú;
+    }
+});
+
+btnlogout.addEventListener("click", () => {
+    localStorage.removeItem("save");
+    localStorage.removeItem("returnmenú");
+    logout.value = "";
+
+
 });
