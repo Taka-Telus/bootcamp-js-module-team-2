@@ -1,8 +1,13 @@
 /* main */
+* {
+    margin: 0;
 
-.settings{
+}
+
+.settings {
     padding: 14%;
-    
+
+
 }
 
 /* changesettings */
@@ -19,3 +24,25 @@
 
 
 /* buttons to save changes */
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.toggle-sound {
+    position: relative;
+    display: inline-block;
+    width: stretch;
+    display: flex;
+    justify-content: right;
+}
+
+.toggle-vibration {
+    position: relative;
+    display: inline-block;
+    width: stretch;
+    display: flex;
+    justify-content: right;
+}
+
