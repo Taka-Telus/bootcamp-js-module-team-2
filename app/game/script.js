@@ -1,7 +1,6 @@
 const gameID = localStorage.getItem ("game-id");
 const apiURL = `https://quiz-api.cesar-kastli.workers.dev/games/${gameID}`
 
-console.log (apiURL);
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
