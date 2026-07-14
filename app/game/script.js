@@ -45,7 +45,6 @@ async function traerJuego(apiURL) {
             const shuffle = order.sort(func);
             const Questions = [...gameData.questions[i].options];
             for (let q = 0; q < Questions.length; q++){
-                    console.log(`${q} ${Questions[shuffle[q]]}`);
                     const gameQuestions = `
                     <div id ="${q}" class ="card"> 
                     <h4 >${Questions[shuffle[q]]}</h4>
@@ -64,7 +63,7 @@ function createClickHandler (shuffle) {
         const userAnswer = event.target.closest (".card");
         const nextQuestionButton = document.createElement("button");
         const rightAnswer = document.getElementById (`${shuffle[0]}`);  
-        const esCorrecta = shuffle[userAnswer.id] === 0;
+        const esCorrecta = userAnswer === rightAnswer;
         console.log(esCorrecta);
 
             
