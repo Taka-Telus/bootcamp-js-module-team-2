@@ -20,7 +20,7 @@ async function traerJuego(apiURL) {
     const titleDisplay = document.getElementById("title-display");
     const questionDisplay = document.getElementById("question-display");
     const gameQuestionTitle = document.createElement ("div");
-    const puntos = 0;
+    let puntos = 0;
     let i = 0;
 
     displayQuestions(i);
@@ -53,30 +53,31 @@ async function traerJuego(apiURL) {
         return function clickHandler(event) {
             const userAnswer = event.target.closest (".card");
             const nextQuestionButton = document.createElement("button");
-            questionDisplay.removeEventListener("click", clickHandler); 
             
-        for (let g = 0; g<4; g++){
-            if (shuffle[g] === 0){
-                rightAnswer = document.getElementById (`${g}`);
+            for (let g = 0; g<4; g++){
+                if (shuffle[g] === 0){
+                    rightAnswer = document.getElementById (`${g}`);
+                }
             }
-        }
-                
+            
             if (userAnswer === rightAnswer) {
                 userAnswer.classList.remove("card");
                 userAnswer.classList.add("correcta");
-
+                puntos++;
+                localStorage.setItem("puntos", puntos);
+                console.log(puntos);
             } else{
                 userAnswer.classList.remove("card");
                 userAnswer.classList.add("incorrecta");
                 rightAnswer.classList.remove("card");
                 rightAnswer.classList.add("correcta");
-                puntos++;
-                localStorage.setItem("puntos", puntos);
+                
             }
-
-
+            
+            
+            questionDisplay.removeEventListener("click", clickHandler); 
+            
             nextQuestionButton.innerHTML = `Siguiente Pregunta`;
-
             questionDisplay.appendChild (nextQuestionButton);
             nextQuestionButton.addEventListener ("click", () => {
                 i ++;   
