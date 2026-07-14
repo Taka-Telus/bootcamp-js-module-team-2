@@ -45,27 +45,30 @@ async function traerJuego(apiURL) {
             const shuffle = order.sort(func);
             const Questions = [...gameData.questions[i].options];
             for (let q = 0; q < Questions.length; q++){
-                    console.log(`${shuffle[q]} ${Questions[shuffle[q]]}`);
+                    console.log(`${q} ${Questions[shuffle[q]]}`);
                     const gameQuestions = `
-                    <div id = "${shuffle[q]}"class ="card"> 
+                    <div id ="${q}" class ="card"> 
                     <h4 >${Questions[shuffle[q]]}</h4>
                     </div>
                     `
                     questionDisplay.insertAdjacentHTML("beforeend", gameQuestions);
-                    questionDisplay.addEventListener ("click", clickHandler);
-            }
+                }
+                questionDisplay.addEventListener ("click", createClickHandler(shuffle));
             
     }
 
     
 
-function clickHandler () {
-            const userAnswer = event.target.closest (".card");
-            const nextQuestionButton = document.createElement("button");
-            const rightAnswer = document.getElementById("0");
+function createClickHandler (shuffle) {
+    return function clickHandler(event) {
+        const userAnswer = event.target.closest (".card");
+        const nextQuestionButton = document.createElement("button");
+        const rightAnswer = document.getElementById (`${shuffle[0]}`);  
+        const esCorrecta = shuffle[userAnswer.id] === 0;
+        console.log(esCorrecta);
 
             
-            if (userAnswer.id === 0){
+            if (esCorrecta) {
                 userAnswer.classList.remove("card");
                 userAnswer.classList.add("correcta");
             } else {
@@ -85,7 +88,7 @@ function clickHandler () {
                 displayQuestions(i);
 
             })
-
+        }    
     }
 
 })();
