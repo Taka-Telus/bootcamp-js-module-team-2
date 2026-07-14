@@ -1,0 +1,25 @@
+.incorrecta {
+    background-color: red;
+    box-shadow: 0px 1px 10px #12111172;
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin: 2% 15%;
+}
+.correcta {
+    background-color: green;
+    box-shadow: 0px 1px 10px #12111172;
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+    margin: 2% 10%;
+    transition: 500ms;
+
+}
+.card {
+    margin: 2% 15%;
+    
+}

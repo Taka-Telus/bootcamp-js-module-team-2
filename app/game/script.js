@@ -27,6 +27,9 @@ async function traerJuego(apiURL) {
     const titleDisplay = document.getElementById("title-display");
     const questionDisplay = document.getElementById("question-display");
     const gameQuestionTitle = document.createElement ("div");
+    let i = 0;
+
+    displayQuestions(i);
     
     function displayQuestions (i){
             
@@ -39,39 +42,39 @@ async function traerJuego(apiURL) {
             shuffledQuestions.sort((a, b) => a.localeCompare(b));
             for (let q = 0; q < gameData.questions[i].options.length; q++){
                     const gameQuestions = `
-                    <div id = "${shuffledQuestions[q]}"class = "card"> 
+                    <div id = "${shuffledQuestions[q]}"class ="card"> 
                     <h4 >${shuffledQuestions[q]}</h4>
                     </div>
                     `
                     questionDisplay.insertAdjacentHTML("beforeend", gameQuestions);
+                    questionDisplay.addEventListener ("click", clickHandler);
             }
             
     }
 
-    let i = 0;
+    
 
-    displayQuestions(i);
-
-
-    questionDisplay.addEventListener ("click", () => {
-
-        const userAnswer = event.target.closest (".card");
+function clickHandler () {
+            const userAnswer = event.target.closest (".card");
             const nextQuestionButton = document.createElement("button");
-            console.log (userAnswer.id);
+            
             if (userAnswer.id === gameData.questions[i].options[0]){
-                userAnswer.innerHTML = `Correcta`
+                userAnswer.classList.remove("card");
+                userAnswer.classList.add("correcta");
             } else {
-                userAnswer.innerHTML = `Incorrecta`
+                userAnswer.classList.remove("card");
+                userAnswer.classList.add("incorrecta");
             }
-            nextQuestionButton.innerHTML = `Siguiente Pregunta`
+
+            nextQuestionButton.innerHTML = `Siguiente Pregunta`;
+
             questionDisplay.appendChild (nextQuestionButton);
+            questionDisplay.removeEventListener("click", clickHandler); 
             nextQuestionButton.addEventListener ("click", () => {
-            i ++;   
-            displayQuestions(i);
+                i ++;   
+                displayQuestions(i);
             })
 
     }
-
-)
 
 })();
