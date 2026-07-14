@@ -23,7 +23,6 @@ async function traerJuego(apiURL) {
     await traerJuego(apiURL);
     const data = localStorage.getItem("gameData");
     const gameData = JSON.parse(data);
-    console.log (gameData);
     const titleDisplay = document.getElementById("title-display");
     const questionDisplay = document.getElementById("question-display");
     const gameQuestionTitle = document.createElement ("div");
@@ -64,7 +63,6 @@ function createClickHandler (shuffle) {
         const nextQuestionButton = document.createElement("button");
         const rightAnswer = document.getElementById (`${shuffle[0]}`);  
         const esCorrecta = userAnswer === rightAnswer;
-        console.log(esCorrecta);
 
             
             if (esCorrecta) {
