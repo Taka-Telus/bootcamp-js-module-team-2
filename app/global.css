@@ -45,3 +45,12 @@ header *{
 .games-menu-home .card{
     margin-right: 5%;
 }
+
+button {
+    background-color: green;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 2%;
+    margin: 2% 0%;
+}
