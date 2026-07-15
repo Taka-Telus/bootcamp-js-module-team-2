@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="settings.css">
+    <script src="settings.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-title">
+            <i></i>
+            <h2 class="title">TriviaBlast</h2>
+        </div>
+        <div class="header-right">
+            <div class="header-score">
+                <h5 class="score">Puntaje</h5>
+                <h5 id="xp-nav">0 XP</h5>
+            </div>
+            <a href="../settings/settings.html">
+                <i class="header-settings">Settings</i>
+            </a>
+        </div>
+    </header>
+
+    <main class="settings">
+
+        <section class="changesettings">
+
+            <div class="titlesettings">
+                <h2>Ajustes de Juego</h2>
+                <p>Personaliza tu Experiencia de TriviaBlast. Tus Cambios se Sincronizan Automáticamente.</p>
+            </div>
+
+            <div class="sound">
+                <i></i>
+                <h3>Sonido del Juego</h3>
+                <p>Efectos de Sonido y Música de Fondo</p>
+
+                <label class="toggle-sound">
+                    <input type="checkbox" id="togglesound">
+                    <span class="slider"></span>
+                </label>
+
+            </div>
+            <hr>
+            <div class="vibration">
+                <i></i>
+                <h3>Vibración</h3>
+                <p>Respuesta Háptica al Acertar</p>
+
+                <label class="toggle-vibration">
+                    <input type="checkbox" id="togglevibration">
+                    <span class="slider"></span>
+                </label>
+
+            </div>
+            <hr>
+            <div class="note">
+                <i></i>
+                <p>Nota: Todos los Ajustes se Guardan Localmente en tu Dispositivo y se Aplican de Inmediato en tu
+                    Próxima Partida.</p>
+            </div>
+        </section>
+
+        <section class="buttons">
+
+            <i class="diskette"></i>
+            <button id="save-changes" class="save">Guardar Cambios</button>
+            <button id="return-menu" class="returnmenú">Volver al menú</button>
+            <button id="logout" class="logout">Cerrar Sesión</button>
+
+        </section>
+    </main>
+</body>
+
+</html>
