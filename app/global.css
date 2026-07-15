@@ -63,3 +63,13 @@ button {
     padding: 2%;
     margin: 2% 0%;
 }
+
+button a {
+    background-color: green;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 2%;
+    margin: 2% 0%;
+    text-decoration: none;
+}
