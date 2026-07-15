@@ -23,3 +23,10 @@
     margin: 2% 15%;
     
 }
+button {
+    background-color: green;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 2%;
+}
