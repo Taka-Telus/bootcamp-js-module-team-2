@@ -1,41 +1,48 @@
 
-const save = document.querySelector("#save-changes");
-const returnmenú = document.querySelector("#return-menú");
-const logout = document.querySelector("#logout");
-const btnsave = document.querySelector("#btn-save");
-const btnreturnmenú = document.querySelector("#btn-return");
-const btnlogout = document.querySelector("#btn-logout");
 
-btnsave.addEventListener("click", () => {
-    localStorage.setItem("save", save.value);
-});
+const btnSave = document.getElementById("save-changes");
+const btnReturn = document.getElementById("return-menu");
+const btnLogout = document.getElementById("logout");
 
-btnsave.addEventListener("click", () => {
+const sound = document.getElementById("togglesound");
+const vibration = document.getElementById("togglevibration");
 
-    const save = localStorage.getItem("save");
-    if (save) {
-         }
+// Cargar ajustes guardados al abrir la página
+window.addEventListener("load", () => {
+    const soundSaved = localStorage.getItem("sound");
+    const vibrationSaved = localStorage.getItem("vibration");
 
-});
+    if (soundSaved !== null) {
+        sound.checked = soundSaved === "true";
+    }
 
-
-btnreturnmenú.addEventListener("click", () => {
-    localStorage.setItem("returnmenú", returnmenú.value);
-    
-});
-
-
-btnreturnmenú.addEventListener("click", () => {
-    const returnmenú = localStorage.getItem("returnmenú");
-    if (returnmenú) {
-        returnmenú.value = returnmenú;
+    if (vibrationSaved !== null) {
+        vibration.checked = vibrationSaved === "true";
     }
 });
 
-btnlogout.addEventListener("click", () => {
-    localStorage.removeItem("save");
-    localStorage.removeItem("returnmenú");
-    logout.value = "";
+// Guardar cambios
+btnSave.addEventListener("click", () => {
 
+    localStorage.setItem("sound", sound.checked);
+    localStorage.setItem("vibration", vibration.checked);
+
+    alert("Cambios guardados correctamente.");
+});
+
+// Volver al menú
+btnReturn.addEventListener("click", () => {
+
+    window.location.href = "../home-page/home-page.html"; // Cambiá la ruta del menú está en otro lugar
 
 });
+
+// Cerrar sesión
+btnLogout.addEventListener("click", () => {
+
+    // Borra solamente los datos de la sesión
+    localStorage.removeItem("username");
+
+
+    window.location.href = "../login/login.html"; // Ruta del login
+})
