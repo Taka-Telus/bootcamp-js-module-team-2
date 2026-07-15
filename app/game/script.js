@@ -77,22 +77,22 @@ async function traerJuego(apiURL) {
                 
             }
             
-            
             questionDisplay.removeEventListener("click", clickHandler); 
-            
-            nextQuestionButton.innerHTML = `Siguiente Pregunta`;
-            questionDisplay.appendChild (nextQuestionButton);
-            nextQuestionButton.addEventListener ("click", () => {
-                i ++;   
-                displayQuestions(i);
+            if ((i+1)===gameData.questions.length){
+                console.log("se terminaron las preguntas");
+                 nextQuestionButton.innerHTML = `
+                 <a href = "../ranking/ranking.html"> Finalizar Cuestionario <a>`;
+                 questionDisplay.appendChild (nextQuestionButton);
+                } else {
+                    nextQuestionButton.innerHTML = `Siguiente Pregunta`;
+                    questionDisplay.appendChild (nextQuestionButton);
+                    nextQuestionButton.addEventListener ("click", () => {
+                        i ++;   
+                        displayQuestions(i);
                 console.log(i);
                 console.log (gameData.questions.length);
-
-                if ((i+1)===gameData.questions.length){
-                        window.location.href = "http://127.0.0.1:5500/app/ranking/ranking.html";
-                }
-
-            })
+            }
+            )}
         }    
     }
 
