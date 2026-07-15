@@ -3,8 +3,9 @@
     grid-template-columns: 3fr 1fr;
     margin: 2% 0%;
 }
-.section * {
-    margin: 0% 2%;
+
+.section .card:first-of-type{
+    margin-right: 2%;
 }
 
 button {
@@ -30,9 +31,6 @@ input, select{
     height: 100%;
     margin: 0% !important;
     margin-right: 3% !important;
-}
-.card {
-    margin-bottom: 2%;
 }
 .right-answer::placeholder{
     color: green;
