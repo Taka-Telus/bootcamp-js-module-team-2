@@ -31,6 +31,10 @@ header *{
     text-decoration: none;
     color: green;
 }
+header span{
+    color: black;
+    text-decoration: none;
+}
 
 .card {
     box-shadow: 0px 1px 10px #12111172;
