@@ -65,7 +65,7 @@ cancelButton.addEventListener("click", saveGame);
 
 function addNewQuestion () {
     const newQuestion = document.createElement ("div");
-    newQuestion.classList.add("card");
+    newQuestion.classList.add("question-card");
     newQuestion.innerHTML = `
     <div class="header">
     <input id="question" placeholder = "type your question here"></input>
@@ -99,33 +99,26 @@ async function saveGame() {
     const questionsDisplayed = document.querySelectorAll(".question-card");
 
     console.log (questionsDisplayed);
-
+    const questionsArray = [];
     for (const questionDisplayed of questionsDisplayed){
-        const title = questionDisplayed.firstElementChild.firstElementChild.value;
+        const titleValue = questionDisplayed.children[0].children[0].value;
         const answer1 = questionDisplayed.lastElementChild.firstElementChild.value;
         const answer2 = questionDisplayed.lastElementChild.firstElementChild.nextElementSibling.value;
         const answer3 = questionDisplayed.lastElementChild.lastElementChild.previousElementSibling.value;
         const answer4 = questionDisplayed.lastElementChild.lastElementChild.value;
 
-
-    try {
-        await fetch (`${apiURL}/${editID}`,
-           { method: "PATCH",
-            body: JSON.stringify({questions: [{title: titleDisp.value, options: [answer1, answer2, answer3, answer4]}]})
-           }
+        questionsArray.push({text:titleValue, options:[answer1, answer2, answer3, answer4]})
+        console.log (questionsArray);
+        try {
+            await fetch (`${apiURL}${editID}`,{ 
+                  method: "PATCH",
+                  body: JSON.stringify({questions:questionsArray})
+                }
         )
     } catch (error) {
         console.log("Falló:", error);
     }
     }
 
-    try {
-        await fetch (`${apiURL}/${editID}`,
-           { method: "PATCH",
-            body: JSON.stringify({title: titleDisp.value, difficulty:difficultyDisp.value})
-           }
-        )
-    } catch (error) {
-        console.log("Falló:", error);
-    }
+
 }
