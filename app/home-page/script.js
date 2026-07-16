@@ -1,17 +1,26 @@
 async function traerUsuario(apiURL) {
     try {
         const respuesta = await fetch(apiURL);
+        
+        // Verificamos si la respuesta de la red es correcta
+        if (!respuesta.ok) {
+            throw new Error(`Error en el servidor: ${respuesta.status} ${respuesta.statusText}`);
+        }
+
         const datos = await respuesta.json();
-        //console.log(JSON.stringify(datos));
         localStorage.setItem("gamesData", JSON.stringify(datos));
     } catch (error) {
-        console.log("Falló:", error);
+        console.error("Falló:", error);
+        
+        // Mostrar error al usuario
+        window.alert('No pudimos conectar con el servidor. Por favor, verifica tu conexión e intenta de nuevo.');
     }
 }
 
 ;(async () => {
     const newGameButton = document.getElementById("new-game-button");
     const gamesDisplayBar = document.getElementById("games-menu-home");
+    const newGameButton = document.getElementById("new-game-button");
     const apiURL = "https://quiz-api.cesar-kastli.workers.dev/games"
     await traerUsuario(apiURL);
     const data = localStorage.getItem("gamesData");
@@ -47,17 +56,21 @@ async function traerUsuario(apiURL) {
             if (playBtn) {
             const gameId = playBtn.id;
             localStorage.setItem ("game-id", gameId);
-            window.location.href = "http://127.0.0.1:5500/app/game/game.html"
+            window.location.href = "/app/game/game.html"
         }
 
         if (editBtn) {
             const gameId = editBtn.id;
             console.log("Edit game", gameId);
             localStorage.setItem ("edit-id", gameId);
-            window.location.href = "http://127.0.0.1:5500/app/new-game/new-game.html"
+            window.location.href = "/app/new-game/new-game.html"
 
         }
 
+        })
+
+        newGameButton.addEventListener("click", () => {
+            localStorage.setItem ("edit-id", "none");
         })
     
 })();
