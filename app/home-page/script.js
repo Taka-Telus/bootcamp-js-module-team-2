@@ -1,11 +1,19 @@
 async function traerUsuario(apiURL) {
     try {
         const respuesta = await fetch(apiURL);
+        
+        // Verificamos si la respuesta de la red es correcta
+        if (!respuesta.ok) {
+            throw new Error(`Error en el servidor: ${respuesta.status} ${respuesta.statusText}`);
+        }
+
         const datos = await respuesta.json();
-        //console.log(JSON.stringify(datos));
         localStorage.setItem("gamesData", JSON.stringify(datos));
     } catch (error) {
-        console.log("Falló:", error);
+        console.error("Falló:", error);
+        
+        // Mostrar error al usuario
+        window.alert('No pudimos conectar con el servidor. Por favor, verifica tu conexión e intenta de nuevo.');
     }
 }
 
