@@ -34,7 +34,6 @@ if (editID === "none"){
     const difficultyDisp = document.getElementById ("game-difficulty");
     const imageDisp = document.getElementById ("game-image");
     const questions = [...gameData.questions]
-    console.log(questions);
     titleDisp.value = gameData.title;
     descriptionDisp.value = gameData.description;
     difficultyDisp.value = gameData.difficulty;
@@ -42,7 +41,7 @@ if (editID === "none"){
 
     for (const question of questions){
     const newQuestion = document.createElement ("div");
-    newQuestion.classList.add("card");
+    newQuestion.classList.add("question-card");
     newQuestion.innerHTML = `
     <div class="header">
     <input id="question" value = "${question.text}"></input>
@@ -94,10 +93,36 @@ async function deleteGame (){
 }
 
 async function saveGame() {
+    const difficultyDisp = document.getElementById ("game-difficulty");
+    const titleDisp = document.getElementById ("game-title");
+    const descriptionDisp = document.getElementById ("game-description");
+    const questionsDisplayed = document.querySelectorAll(".question-card");
+
+    console.log (questionsDisplayed);
+
+    for (const questionDisplayed of questionsDisplayed){
+        const title = questionDisplayed.firstElementChild.firstElementChild.value;
+        const answer1 = questionDisplayed.lastElementChild.firstElementChild.value;
+        const answer2 = questionDisplayed.lastElementChild.firstElementChild.nextElementSibling.value;
+        const answer3 = questionDisplayed.lastElementChild.lastElementChild.previousElementSibling.value;
+        const answer4 = questionDisplayed.lastElementChild.lastElementChild.value;
+
+
     try {
         await fetch (`${apiURL}/${editID}`,
            { method: "PATCH",
+            body: JSON.stringify({questions: [{title: titleDisp.value, options: [answer1, answer2, answer3, answer4]}]})
+           }
+        )
+    } catch (error) {
+        console.log("Falló:", error);
+    }
+    }
 
+    try {
+        await fetch (`${apiURL}/${editID}`,
+           { method: "PATCH",
+            body: JSON.stringify({title: titleDisp.value, difficulty:difficultyDisp.value})
            }
         )
     } catch (error) {
