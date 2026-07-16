@@ -33,15 +33,16 @@ btnSave.addEventListener("click", () => {
 // Volver al menú
 btnReturn.addEventListener("click", () => {
 
-    window.location.href = "../home-page/home-page.html"; // Cambiá la ruta del menú está en otro lugar
-
+    window.location.href = "../home-page/home-page.html"; // Ruta del menú 
 });
 
 // Cerrar sesión
 btnLogout.addEventListener("click", () => {
 
-    // Borra solamente los datos de la sesión
-    localStorage.removeItem("username");
+    // Se eliminan todos los datos guardados en el navegador
+    localStorage.clear();
+
+
 
 
     window.location.href = "../login/login.html"; // Ruta del login
