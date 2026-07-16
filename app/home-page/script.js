@@ -20,6 +20,7 @@ async function traerUsuario(apiURL) {
 ;(async () => {
 
     const gamesDisplayBar = document.getElementById("games-menu-home");
+    const newGameButton = document.getElementById("new-game-button");
     const apiURL = "https://quiz-api.cesar-kastli.workers.dev/games"
     await traerUsuario(apiURL);
     const data = localStorage.getItem("gamesData");
@@ -59,10 +60,14 @@ async function traerUsuario(apiURL) {
             const gameId = editBtn.id;
             console.log("Edit game", gameId);
             localStorage.setItem ("edit-id", gameId);
-            window.location.href = "http://127.0.0.1:5500/app/new-game/edit.html"
+            window.location.href = "http://127.0.0.1:5500/app/new-game/new-game.html"
 
         }
 
+        })
+
+        newGameButton.addEventListener("click", () => {
+            localStorage.setItem ("edit-id", "none");
         })
     
 })();
