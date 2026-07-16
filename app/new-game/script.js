@@ -94,7 +94,13 @@ async function deleteGame (){
 }
 
 async function saveGame() {
-    //try {
-    //    await fetch (``)
-    //}
+    try {
+        await fetch (`${apiURL}/${editID}`,
+           { method: "PATCH",
+
+           }
+        )
+    } catch (error) {
+        console.log("Falló:", error);
+    }
 }
