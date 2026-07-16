@@ -9,6 +9,7 @@ async function traerJuego(apiURL) {
         localStorage.setItem("gameData", JSON.stringify(datos));
     } catch (error) {
         console.log("Falló:", error);
+        
     }
 }
 

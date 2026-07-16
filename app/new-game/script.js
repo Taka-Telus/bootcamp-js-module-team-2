@@ -60,6 +60,9 @@ if (editID === "none"){
     })();
 }
 addQuestionButton.addEventListener("click", addNewQuestion);
+deleteGameButton.addEventListener("click", deleteGame());
+saveChangesButton.addEventListener("click", saveGame());
+cancelButton.addEventListener("click", saveGame());
 
 function addNewQuestion () {
     const newQuestion = document.createElement ("div");
@@ -79,10 +82,17 @@ function addNewQuestion () {
     questionDisplay.appendChild (newQuestion);
 }
 
-deleteGameButton.addEventListener("click", deleteGame());
-saveChangesButton.addEventListener("click", saveGame());
-cancelButton.addEventListener("click", saveGame());
+async function deleteGame (){
+    console.log("boton apretado");
+   // try {
+   //         await fetch (`${apiURL}/${editID}`, {
+   //             method:"DELETE"
+   //         });
+   //     } catch (error) {
+   //         console.log("Falló:", error);
+   //     }
+}
 
-function deleteGame (){
+async function saveGame() {
     
 }
