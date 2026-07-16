@@ -1,7 +1,7 @@
 async function traerUsuario(apiURL) {
     try {
         const respuesta = await fetch(apiURL);
-        
+
         // Verificamos si la respuesta de la red es correcta
         if (!respuesta.ok) {
             throw new Error(`Error en el servidor: ${respuesta.status} ${respuesta.statusText}`);
@@ -11,7 +11,7 @@ async function traerUsuario(apiURL) {
         localStorage.setItem("gamesData", JSON.stringify(datos));
     } catch (error) {
         console.error("Falló:", error);
-        
+
         // Mostrar error al usuario
         window.alert('No pudimos conectar con el servidor. Por favor, verifica tu conexión e intenta de nuevo.');
     }
@@ -20,7 +20,6 @@ async function traerUsuario(apiURL) {
 ;(async () => {
     const newGameButton = document.getElementById("new-game-button");
     const gamesDisplayBar = document.getElementById("games-menu-home");
-    const newGameButton = document.getElementById("new-game-button");
     const apiURL = "https://quiz-api.cesar-kastli.workers.dev/games"
     await traerUsuario(apiURL);
     const data = localStorage.getItem("gamesData");
@@ -68,11 +67,5 @@ async function traerUsuario(apiURL) {
         }
 
         })
-
-        newGameButton.addEventListener("click", () => {
-            localStorage.setItem ("edit-id", "none");
-        })
     
 })();
-
-
