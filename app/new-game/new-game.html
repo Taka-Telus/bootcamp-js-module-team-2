@@ -38,16 +38,17 @@
         </form>
         <form>
             <h6>Dificultad</h6>
+            
             <select name="Dificultad" id="game-difficulty">
-                <option value="hard">Dificil</option>
-                <option value="mid">Medio</option>
-                <option value="easy">Fácil</option>
+                <option value="Difícil">Dificil</option>
+                <option value="Medio">Medio</option>
+                <option value="Fácil">Fácil</option>
             </select>
         </form>
     </div>
     <div class="card">
         <h6>Imagen de Portada</h6>
-
+        <img id="game-image" alt="image">
     </div>
 </div>
 <div class="section">
@@ -57,7 +58,11 @@
 <div id="questions">
 
 </div>
-
+<div>
+    <button id="delete-game">Eliminar Juego</button>
+    <button id="cancel">Cancelar</button>
+    <button id="save-changes">Guardar cambios</button>
+</div>
 </main>
 <script src="script.js"></script>
 </body>
