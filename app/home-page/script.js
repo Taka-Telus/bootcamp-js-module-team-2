@@ -53,14 +53,14 @@ async function traerUsuario(apiURL) {
             if (playBtn) {
             const gameId = playBtn.id;
             localStorage.setItem ("game-id", gameId);
-            window.location.href = "http://127.0.0.1:5500/app/game/game.html"
+            window.location.href = "../app/game/game.html"
         }
 
         if (editBtn) {
             const gameId = editBtn.id;
             console.log("Edit game", gameId);
             localStorage.setItem ("edit-id", gameId);
-            window.location.href = "http://127.0.0.1:5500/app/new-game/new-game.html"
+            window.location.href = "../app/new-game/new-game.html"
 
         }
 
