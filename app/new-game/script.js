@@ -1,8 +1,11 @@
 const questionDisplay = document.getElementById("questions");
 const addQuestionButton = document.getElementById ("add-questions");
-const apiURL = `https://quiz-api.cesar-kastli.workers.dev/games/`
-
-
+const apiURL = `https://quiz-api.cesar-kastli.workers.dev/games/`;
+const gameId = localStorage.getItem ("edit-id");
+console.log (gameId);
+if(gameId === "none"){
+    console.log("do not call api");
+} else {}
 addQuestionButton.addEventListener("click", addQuestionHandler);
 
 function addQuestionHandler () {
