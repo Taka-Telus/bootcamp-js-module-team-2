@@ -1,10 +1,10 @@
 const questionDisplay = document.getElementById("questions");
 const addQuestionButton = document.getElementById ("add-questions");
-const apiURL = `https://quiz-api.cesar-kastli.workers.dev/games/`
-const editID = localStorage.getItem ("edit-id"); 
 const deleteGameButton = document.getElementById("delete-game");
 const saveChangesButton = document.getElementById("save-changes");
 const cancelButton = document.getElementById("cancel");
+const apiURL = `https://quiz-api.cesar-kastli.workers.dev/games/`;
+const editID = localStorage.getItem ("edit-id"); 
 
 if (editID === "none"){
     console.log("do not call api")
@@ -60,9 +60,9 @@ if (editID === "none"){
     })();
 }
 addQuestionButton.addEventListener("click", addNewQuestion);
-deleteGameButton.addEventListener("click", deleteGame());
-saveChangesButton.addEventListener("click", saveGame());
-cancelButton.addEventListener("click", saveGame());
+deleteGameButton.addEventListener("click", deleteGame);
+saveChangesButton.addEventListener("click", saveGame);
+cancelButton.addEventListener("click", saveGame);
 
 function addNewQuestion () {
     const newQuestion = document.createElement ("div");
@@ -84,15 +84,17 @@ function addNewQuestion () {
 
 async function deleteGame (){
     console.log("boton apretado");
-   // try {
-   //         await fetch (`${apiURL}/${editID}`, {
-   //             method:"DELETE"
-   //         });
-   //     } catch (error) {
-   //         console.log("Falló:", error);
-   //     }
+    try {
+            await fetch (`${apiURL}/${editID}`, {
+                method:"DELETE"
+            });
+        } catch (error) {
+            console.log("Falló:", error);
+        }
 }
 
 async function saveGame() {
-    
+    //try {
+    //    await fetch (``)
+    //}
 }
