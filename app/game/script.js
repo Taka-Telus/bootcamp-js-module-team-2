@@ -67,31 +67,26 @@ async function traerJuego(apiURL) {
                 userAnswer.classList.remove("card");
                 userAnswer.classList.add("correcta");
                 puntos++;
-                localStorage.setItem("puntos", puntos);
-                console.log(puntos);
             } else{
                 userAnswer.classList.remove("card");
                 userAnswer.classList.add("incorrecta");
                 rightAnswer.classList.remove("card");
                 rightAnswer.classList.add("correcta");
-                
             }
             
             questionDisplay.removeEventListener("click", clickHandler); 
             if ((i+1)===gameData.questions.length){
-                console.log("se terminaron las preguntas");
-                 nextQuestionButton.innerHTML = `
-                 <a href = "../ranking/ranking.html"> Finalizar Cuestionario <a>`;
-                 questionDisplay.appendChild (nextQuestionButton);
-                } else {
-                    nextQuestionButton.innerHTML = `Siguiente Pregunta`;
-                    questionDisplay.appendChild (nextQuestionButton);
-                    nextQuestionButton.addEventListener ("click", () => {
-                        i ++;   
-                        displayQuestions(i);
-                console.log(i);
-                console.log (gameData.questions.length);
-            }
+                localStorage.setItem("puntos", puntos);         
+                nextQuestionButton.innerHTML = `
+                <a href = "../ranking/ranking.html"> Finalizar Cuestionario <a>`;
+                questionDisplay.appendChild (nextQuestionButton);
+            } else {
+                nextQuestionButton.innerHTML = `Siguiente Pregunta`;
+                questionDisplay.appendChild (nextQuestionButton);
+                nextQuestionButton.addEventListener ("click", () => {
+                    i ++;   
+                    displayQuestions(i);
+                }
             )}
         }    
     }
