@@ -85,16 +85,20 @@ function addNewQuestion () {
 async function deleteGame (){
     console.log("boton apretado");
     try {
-            await fetch (`${apiURL}/${editID}`, {
+            const response = await fetch (`${apiURL}${editID}`, {
                 method:"DELETE"
             });
-        } catch (error) {
-            console.log("Falló:", error);
+             if (response.ok){
+            window.alert("Se eliminó el juego correctamente.");
+            window.location.href  = '../home-page/home-page.html';
         }
+        } catch (error) {
+            console.log("Falló:", error);   
+        }
+       
 }
 
 async function saveGame() {
-    console.log("saving game");
     const difficultyDisp = document.getElementById ("game-difficulty");
     const titleDisp = document.getElementById ("game-title");
     const descriptionDisp = document.getElementById ("game-description");
@@ -114,7 +118,9 @@ async function saveGame() {
                 }
         )
         if (response.ok){
-            window.alert("Se guardo el juego correctamente.")    
+            window.alert("Se guardo el juego correctamente.");
+            window.location.href  = '../home-page/home-page.html';
+
         } else {
             window.alert("El envio del juego tiene un formato incorrecto.")    
         }
@@ -132,33 +138,42 @@ async function saveGame() {
         const answer3 = questionDisplayed.lastElementChild.lastElementChild.previousElementSibling.value;
         const answer4 = questionDisplayed.lastElementChild.lastElementChild.value;
         const gameData = localStorage.getItem("gameData");
-
+        const editID = localStorage.getItem ("edit-id"); 
         questionsArray.push({text:titleValue, options:[answer1, answer2, answer3, answer4]})
         console.log (questionsArray);
         try {
-            await fetch (`${apiURL}${editID}`,{ 
+            const response = await fetch (`${apiURL}${editID}`,{ 
                   method: "PATCH",
                   body: JSON.stringify({questions:questionsArray})
                 }
         )
+        if(response.ok){
+            window.alert ("Juego guardado correctamente.")
+            window.location.href = "../home-page/home-page.html";
+        }
     } catch (error) {
         console.log("Falló:", error);
     }
         try {
-            await fetch (`${apiURL}${editID}`,{ 
+            const response = await fetch (`${apiURL}${editID}`,{ 
                   method: "PATCH",
                   body: JSON.stringify({
                     title: titleDisp.value,
                     image:gameData.image,
                     difficulty:difficultyDisp.value
                 })
-                }
+            }
         )
+        if(response.ok){
+            window.alert ("Juego guardado correctamente.")
+            window.location.href = "../home-page/home-page.html";
+        }
     }   catch (error) {
         console.log("Falló:", error);
     }
     }
     }
+    
 
 
 }
