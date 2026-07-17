@@ -1,0 +1,137 @@
+/* main */
+* {
+    margin: 0;
+
+}
+
+.settings {
+    padding: 14%;
+
+
+}
+
+/* changesettings */
+
+.changesettings {
+    box-shadow: 0px 1px 10px #12111172;
+    margin-top: -14%;
+    border-radius: 5px;
+}
+
+.titlesettings h2 {
+    color: #2B8000;
+}
+
+
+/* Toggle Switch */
+
+.toggle-vibration input {
+    display: none;
+}
+
+
+.toggle-vibration {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    cursor: pointer;
+}
+
+
+.toggle-vibration .slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+
+.toggle-vibration .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #2563EB;
+;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+
+.toggle-vibration input:checked + .slider {
+    background-color: #2B8000;
+}
+
+
+.toggle-vibration input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.toggle-sound input {
+    display: none;
+}
+
+
+.toggle-sound {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    cursor: pointer;
+}
+
+
+.toggle-sound .slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+
+.toggle-sound .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #2563EB;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.toggle-sound input:checked + .slider {
+    background-color: #2B8000;
+}
+
+
+.toggle-sound input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+
+/* buttons save changes and cancel changes */
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+
+
+
+
+
