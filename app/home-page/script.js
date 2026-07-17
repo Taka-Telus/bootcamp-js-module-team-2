@@ -1,3 +1,11 @@
+const greetingMessage = document.getElementById ("greeting-message");
+const userName = localStorage.getItem("nombre");
+
+greetingMessage.innerText = `Ready for a challenge, ${userName}?`;
+if (!userName){
+    window.location.href = "../login/login.html"
+}
+
 async function traerUsuario(apiURL) {
     try {
         const respuesta = await fetch(apiURL);
@@ -15,6 +23,10 @@ async function traerUsuario(apiURL) {
         // Mostrar error al usuario
         window.alert('No pudimos conectar con el servidor. Por favor, verifica tu conexión e intenta de nuevo.');
     }
+    if (!userName){
+    window.location.href = "../login/login.html"
+    }
+
 }
 
 ;(async () => {
@@ -50,7 +62,6 @@ async function traerUsuario(apiURL) {
         gamesDisplayBar.addEventListener("click", (event) => {
             const playBtn = event.target.closest (".play-btn");
             const editBtn = event.target.closest (".edit-btn");
-            console.log ("click");
 
             if (playBtn) {
             const gameId = playBtn.id;
