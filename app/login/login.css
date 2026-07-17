@@ -1,9 +1,18 @@
 #login-card{
     flex-direction: column;
-    margin: 30%;
+    margin: 17%;
+    background-color: white;
 
 }
 
 #login-card *{
     margin: 0.5rem;
+}
+#login-card input {
+    border-radius: 8px;
+    border-color: gray;
+    height: 4rem;
+}
+body {
+    background-image: linear-gradient(to bottom left, rgb(0, 128, 0), rgba(255, 255, 255, 0.376), rgba(128, 0, 128, 0.826));
 }

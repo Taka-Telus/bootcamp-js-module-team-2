@@ -1,0 +1,41 @@
+.section {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    margin: 2% 0%;
+}
+
+.section .card:first-of-type{
+    margin-right: 2%;
+}
+
+button {
+    background-color: green;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 2%;
+}
+
+input, select{
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding: 1%;
+    margin: 8px 0px !important;
+}
+
+.header {
+    display: grid;
+    grid-template-columns:5fr 1fr;
+}
+.header input {
+    height: 100%;
+    margin: 0% !important;
+    margin-right: 3% !important;
+}
+.right-answer::placeholder{
+    color: green;
+}
+.right-answer{
+    border-color: green;
+    border-width: 2px;
+}
