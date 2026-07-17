@@ -1,9 +1,14 @@
 #login-card{
     flex-direction: column;
-    margin: 30%;
+    margin: 17%;
 
 }
 
 #login-card *{
     margin: 0.5rem;
+}
+#login-card input {
+    border-radius: 8px;
+    border-color: gray;
+    height: 4rem;
 }
