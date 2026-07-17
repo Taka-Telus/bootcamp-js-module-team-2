@@ -3,7 +3,7 @@ const saludo = document.querySelector("#saludo");
 const loginbutton = document.querySelector("#login-button");
 
 loginbutton.addEventListener("click", () => {
-    localStorage.setItem("nombre", logininput.value);
+    localStorage.setItem("nombre", logininput.value.trim());
 });
 
 loginbutton.addEventListener("click", () => {
