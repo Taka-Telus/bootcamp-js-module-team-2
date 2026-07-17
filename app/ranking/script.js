@@ -3,7 +3,7 @@ const ansRigthDisp = document.getElementById("right-anwers-ranking");
 const puntos = localStorage.getItem("puntos");
 
 const soundEnabled = localStorage.getItem("sound") === "true";
-const farfareSound = new Audio("../ranking/farfare.mp3");
+const farfareSound = new Audio("./fanfare.mp3");
 
 confetti({
   particleCount: 250,
@@ -23,10 +23,6 @@ ansRigthDisp.innerHTML = `${puntos} Respuestas Correctas`; {
   if (soundEnabled) {
     farfareSound.play();
   }
-  else (soundEnabled === false); {
 
-    farfareSound.pause();
-    
-} 
 }
 //no funciona el sonido, no se reproduce, no se si es por el navegador o por el codigo, pero no se reproduce, review

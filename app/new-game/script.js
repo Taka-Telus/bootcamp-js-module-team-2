@@ -46,7 +46,6 @@ if (editID === "none"){
     newQuestion.innerHTML = `
     <div class="header">
     <input id="question" value = "${question.text}"></input>
-    <button>🗑️</button>
     </div>
     <div>
     <input id="answer1" class = "right-answer" value = "${question.options[0]}"></input>
@@ -70,7 +69,6 @@ function addNewQuestion () {
     newQuestion.innerHTML = `
     <div class="header">
     <input id="question" placeholder = "type your question here"></input>
-    <button id="delete" >🗑️</button>
     </div>
     <div>
     <input id="answer1" class = "right-answer" placeholder = "type your answer here"></input>
@@ -81,6 +79,7 @@ function addNewQuestion () {
     `
     questionDisplay.appendChild (newQuestion);
 }
+
 
 async function deleteGame (){
     console.log("boton apretado");
