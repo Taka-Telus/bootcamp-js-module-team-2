@@ -8,6 +8,7 @@ const editID = localStorage.getItem ("edit-id");
 
 if (editID === "none"){
     console.log("do not call api")
+
 } else {
     console.log ("call api");
     console.log(editID);
@@ -93,11 +94,35 @@ async function deleteGame (){
 }
 
 async function saveGame() {
+    console.log("saving game");
     const difficultyDisp = document.getElementById ("game-difficulty");
     const titleDisp = document.getElementById ("game-title");
     const descriptionDisp = document.getElementById ("game-description");
     const questionsDisplayed = document.querySelectorAll(".question-card");
-
+    if (editID === "none"){
+    console.log("do not call api")
+     try {  
+            console.log("arranca el Post");
+            const response = await fetch (`${apiURL}`,{ 
+                  method: "POST",
+                  body: JSON.stringify({
+                    title:titleDisp.value,
+                    author: "team-2",
+                    image: "https://thumbs.dreamstime.com/b/contact-form-line-icon-paper-pen-blank-sign-vector-graphics-linear-pattern-white-background-eps-contact-form-line-icon-122598215.jpg",
+                    difficulty: difficultyDisp.value
+                  })
+                }
+        )
+        if (response.ok){
+            window.alert("Se guardo el juego correctamente.")    
+        } else {
+            window.alert("El envio del juego tiene un formato incorrecto.")    
+        }
+    } catch (error) {
+        console.log("Falló:", error);
+        window.alert("Error al guardar el juego, intente nuevamente mas tarde.")    
+    }
+} else {
     console.log (questionsDisplayed);
     const questionsArray = [];
     for (const questionDisplayed of questionsDisplayed){
@@ -106,6 +131,7 @@ async function saveGame() {
         const answer2 = questionDisplayed.lastElementChild.firstElementChild.nextElementSibling.value;
         const answer3 = questionDisplayed.lastElementChild.lastElementChild.previousElementSibling.value;
         const answer4 = questionDisplayed.lastElementChild.lastElementChild.value;
+        const gameData = localStorage.getItem("gameData");
 
         questionsArray.push({text:titleValue, options:[answer1, answer2, answer3, answer4]})
         console.log (questionsArray);
@@ -118,7 +144,22 @@ async function saveGame() {
     } catch (error) {
         console.log("Falló:", error);
     }
+        try {
+            await fetch (`${apiURL}${editID}`,{ 
+                  method: "PATCH",
+                  body: JSON.stringify({
+                    title: titleDisp.value,
+                    image:gameData.image,
+                    difficulty:difficultyDisp.value
+                })
+                }
+        )
+    }   catch (error) {
+        console.log("Falló:", error);
+    }
+    }
     }
 
 
 }
+
