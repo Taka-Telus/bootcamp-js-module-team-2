@@ -31,6 +31,24 @@ async function traerJuego(apiURL) {
     let puntos = 0;
     let i = 0;
 
+    class Partida {
+        constructor (gameData){
+            this.titulo = gameData.title;
+            this.id = localStorage.getItem("game-id");
+            this.preguntas = gameData.questions;
+            this.pregunta = 0;
+            this.puntos = 0;
+        }
+        nextQuestion (){
+            this.pregunta =+1;
+        }
+        addPuntos (puntos){
+            this.puntos =+ puntos;
+        }
+    }
+    const thisPartida = new Partida (gameData);
+    console.log (thisPartida);
+    console.log(Partida);
     displayQuestions(i);
 
     function func(a, b) {
